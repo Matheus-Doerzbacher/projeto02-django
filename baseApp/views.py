@@ -15,8 +15,8 @@ def contato(request):
             form.send_email()
             messages.success(request, "E-mai enviado com sucesso")
             form = ContatoForm()
-    else:
-        messages.error(request, "Erro ao enviar Email")
+        else:
+            messages.error(request, "Erro ao enviar Email")
     context = {
         "form": form,
     }
