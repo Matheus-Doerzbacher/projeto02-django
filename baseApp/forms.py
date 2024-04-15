@@ -1,5 +1,6 @@
 from django import forms
 from django.core.mail.message import EmailMessage
+from .models import Produto
 
 
 class ContatoForm(forms.Form):
@@ -22,10 +23,15 @@ class ContatoForm(forms.Form):
             subject="Email enviado pelo sistema django2",
             body=conteudo,
             from_email="contato@seudominio.com",
-            to=[
-                "contato@seudominio.com",
-            ],
+            to=["contato@seudominio.com"],
             headers={"Reply-To": email},
         )
 
         mail.send()
+
+
+class ProdutoModelForm(forms.ModelForm):
+
+    class Meta:
+        model = Produto
+        fields = ["nome", "preco", "estoque", "imagem"]
